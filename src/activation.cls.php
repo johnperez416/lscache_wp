@@ -51,7 +51,7 @@ class Activation extends Base {
 
 		// Files will be delayed updated in next visit to wp-admin
 		Conf::update_option( '__activation', Core::VER );
-
+error_log('register activation');
 		/* Network file handler */
 		if ( is_multisite() ) {
 			if ( ! is_network_admin() ) {

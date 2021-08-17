@@ -132,7 +132,7 @@ class Conf extends Base {
 		 * Pros: This is to avoid file correction script changed in new versions
 		 * Cons: Conf upgrade won't get file correction if there is new values that are used in file
 		 */
-		if ( self::get_option( '__activation' ) ) {
+		if ( self::get_option( '__activation' ) ) {error_log('run into delayed activateion');
 			// Check new version @since 2.9.3
 			Cloud::version_check( 'activate' . ( defined( 'LSCWP_REF' ) ? '_' . LSCWP_REF : '' ) );
 
