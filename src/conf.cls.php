@@ -61,13 +61,17 @@ class Conf extends Base {
 		$this->load_options();
 
 		$ver = $this->conf( self::_VER );
-
+error_log('new ver conf 64');
 		/**
-		 * Don't upgrade or run new installations other than from backend visit
+		 * Don't upgrade or run new installations other than from backend visit at the 2nd time (delay the update)
 		 * In this case, just use default conf
 		 */
+		$has_delay_conf_tag = self::get_option( '__activation' );
 		if ( ! $ver || $ver != Core::VER ) {
-			if ( ! is_admin() && ! defined( 'LITESPEED_CLI' ) ) {
+error_log('new ver conf 71');
+			if ( ( ! is_admin() && ! defined( 'LITESPEED_CLI' ) ) || ! $has_delay_conf_tag ) { // Reuse __activation to control the delay conf update
+				$has_delay_conf_tag || self::update_option( '__activation', Core::VER );
+error_log('new ver conf 74');
 				$this->set_conf( $this->load_default_vals() );
 				$this->_try_load_site_options();
 
@@ -132,7 +136,7 @@ class Conf extends Base {
 		 * Pros: This is to avoid file correction script changed in new versions
 		 * Cons: Conf upgrade won't get file correction if there is new values that are used in file
 		 */
-		if ( self::get_option( '__activation' ) ) {
+		if ( $has_delay_conf_tag ) {
 			// Check new version @since 2.9.3
 			Cloud::version_check( 'activate' . ( defined( 'LSCWP_REF' ) ? '_' . LSCWP_REF : '' ) );
 

@@ -41,6 +41,7 @@ class Core extends Root {
 	 * @since    1.0.0
 	 */
 	public function __construct() {
+error_log('new ver conf core-----------');
 		$this->cls( 'Conf' )->init();
 
 		// Check if debug is on
