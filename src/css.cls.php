@@ -6,6 +6,7 @@
  */
 namespace LiteSpeed;
 defined( 'WPINC' ) || exit;
+error_log(lstest.' new css ' );
 
 class CSS extends Base {
 	const TYPE_GEN_CCSS = 'gen_ccss';
