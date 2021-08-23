@@ -6,7 +6,7 @@
  */
 namespace LiteSpeed;
 defined( 'WPINC' ) || exit;
-
+error_log(lstest.' old css ' );
 class CSS extends Base {
 	const TYPE_GEN_CCSS = 'gen_ccss';
 	const TYPE_GEN_UCSS = 'gen_ucss';
