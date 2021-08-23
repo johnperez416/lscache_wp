@@ -61,13 +61,17 @@ class Conf extends Base {
 		$this->load_options();
 
 		$ver = $this->conf( self::_VER );
+defined('lstest') || define('lstest', Str::rrand( 3 ).'--');
+error_log(lstest.' old ver conf 64');
 
 		/**
 		 * Don't upgrade or run new installations other than from backend visit
 		 * In this case, just use default conf
 		 */
 		if ( ! $ver || $ver != Core::VER ) {
+error_log(lstest.'old ver conf 71 diff ver');
 			if ( ! is_admin() && ! defined( 'LITESPEED_CLI' ) ) {
+error_log(lstest.'old ver conf 74 load default conf');
 				$this->set_conf( $this->load_default_vals() );
 				$this->_try_load_site_options();
 
@@ -77,6 +81,7 @@ class Conf extends Base {
 				}
 				return;
 			}
+error_log(lstest.'old ver 85 fire conf update');
 		}
 
 		/**

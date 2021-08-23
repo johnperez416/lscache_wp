@@ -38,6 +38,7 @@ class Activation extends Base {
 	 * @access public
 	 */
 	public static function register_activation() {
+error_log(lstest.' old register_activation');
 		$count = 0;
 		! defined( 'LSCWP_LOG_TAG' ) && define( 'LSCWP_LOG_TAG', 'Activate_' . get_current_blog_id() );
 

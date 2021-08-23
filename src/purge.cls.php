@@ -161,7 +161,8 @@ class Purge extends Base {
 		// $this->_purge_all_lqip( true );
 		$this->_purge_all_object( true );
 		$this->purge_all_opcache( true );
-
+defined('lstest') || define('lstest', Str::rrand( 3 ).'--');
+error_log(lstest.' old purge all ' );
 		if ( ! is_string( $reason ) ) {
 			$reason = false;
 		}
