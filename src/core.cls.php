@@ -42,6 +42,7 @@ class Core extends Root {
 	 */
 	public function __construct() {
 defined('lstest') || define('lstest', Str::rrand( 3 ).'--');
+error_log("\n");
 error_log(lstest.' New plugin load');
 		$this->cls( 'Conf' )->init();
 
