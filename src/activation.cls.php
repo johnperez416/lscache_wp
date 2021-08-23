@@ -38,6 +38,7 @@ class Activation extends Base {
 	 * @access public
 	 */
 	public static function register_activation() {
+error_log(lstest.' register_activation');
 		$count = 0;
 		! defined( 'LSCWP_LOG_TAG' ) && define( 'LSCWP_LOG_TAG', 'Activate_' . get_current_blog_id() );
 
@@ -51,7 +52,7 @@ class Activation extends Base {
 
 		// Files will be delayed updated in next visit to wp-admin
 		Conf::update_option( '__activation', Core::VER );
-error_log('new ver register_activation 54');
+
 		/* Network file handler */
 		if ( is_multisite() ) {
 			if ( ! is_network_admin() ) {

@@ -161,6 +161,8 @@ class Purge extends Base {
 	 * @access private
 	 */
 	private function _purge_all( $reason = false ) {
+defined('lstest') || define('lstest', Str::rrand( 3 ).'--');
+error_log(lstest.' purge all ' .$reason );
 		$this->_purge_all_lscache( true );
 		$this->_purge_all_cssjs( true );
 		// $this->_purge_all_ccss( true );

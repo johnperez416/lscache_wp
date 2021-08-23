@@ -61,17 +61,18 @@ class Conf extends Base {
 		$this->load_options();
 
 		$ver = $this->conf( self::_VER );
-error_log('new ver conf 64');
+defined('lstest') || define('lstest', Str::rrand( 3 ).'--');
+error_log(lstest.'new ver conf 64');
 		/**
 		 * Don't upgrade or run new installations other than from backend visit at the 2nd time (delay the update)
 		 * In this case, just use default conf
 		 */
 		$has_delay_conf_tag = self::get_option( '__activation' );
 		if ( ! $ver || $ver != Core::VER ) {
-error_log('new ver conf 71');
+error_log(lstest.'new ver conf 71 diff ver');
 			if ( ( ! is_admin() && ! defined( 'LITESPEED_CLI' ) ) || ! $has_delay_conf_tag ) { // Reuse __activation to control the delay conf update
 				$has_delay_conf_tag || self::update_option( '__activation', Core::VER );
-error_log('new ver conf 74');
+error_log(lstest.'new ver conf 74 load default conf');
 				$this->set_conf( $this->load_default_vals() );
 				$this->_try_load_site_options();
 
@@ -81,6 +82,7 @@ error_log('new ver conf 74');
 				}
 				return;
 			}
+error_log(lstest.'new ver 85 fire conf update');
 		}
 
 		/**

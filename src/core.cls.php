@@ -41,7 +41,8 @@ class Core extends Root {
 	 * @since    1.0.0
 	 */
 	public function __construct() {
-error_log('new ver conf core-----------');
+defined('lstest') || define('lstest', Str::rrand( 3 ).'--');
+error_log(lstest.' New plugin load');
 		$this->cls( 'Conf' )->init();
 
 		// Check if debug is on
