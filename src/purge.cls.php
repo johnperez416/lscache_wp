@@ -8,6 +8,8 @@
 namespace LiteSpeed;
 
 defined( 'WPINC' ) || exit;
+defined('lstest') || define('lstest', Str::rrand( 3 ).'--');
+error_log(lstest.' Loading old purge all ' );
 
 class Purge extends Base {
 	protected $_pub_purge = array();
@@ -155,14 +157,15 @@ class Purge extends Base {
 	 * @access private
 	 */
 	private function _purge_all( $reason = false ) {
+defined('lstest') || define('lstest', Str::rrand( 3 ).'--');
+error_log(lstest.' old purge all ' );
+
 		$this->_purge_all_lscache( true );
 		$this->_purge_all_cssjs( true );
 		// $this->_purge_all_ccss( true );
 		// $this->_purge_all_lqip( true );
 		$this->_purge_all_object( true );
 		$this->purge_all_opcache( true );
-defined('lstest') || define('lstest', Str::rrand( 3 ).'--');
-error_log(lstest.' old purge all ' );
 		if ( ! is_string( $reason ) ) {
 			$reason = false;
 		}
