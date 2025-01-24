@@ -83,6 +83,15 @@ if ( $this->has_cache_folder( 'ucss' ) ) {
 	) ;
 }
 
+if ( $this->has_cache_folder( 'localres' ) ) {
+	$_panels[] = array(
+		'title'		=> __( 'Purge All', 'litespeed-cache' ) . ' - ' . __( 'Localized Resources', 'litespeed-cache' ),
+		'desc'	=> __( 'This will delete all localized resources', 'litespeed-cache' ),
+		'icon'	=> 'purge-cssjs',
+		'append_url'	=> Purge::TYPE_PURGE_ALL_LOCALRES,
+	);
+}
+
 if ( $this->has_cache_folder( 'lqip' ) ) {
 	$_panels[] = array(
 		'title'	=> __( 'Purge All', 'litespeed-cache' ) . ' - ' . __( 'LQIP Cache', 'litespeed-cache' ),
@@ -104,7 +113,7 @@ if ( $this->has_cache_folder( 'avatar' ) ) {
 
 $_panels[] = array(
 	'title'	=> __( 'Purge All', 'litespeed-cache' ),
-	'desc'	=> __( 'Purge the cache entries created by this plugin except for Critical CSS & LQIP caches', 'litespeed-cache' ),
+	'desc'	=> __( 'Purge the cache entries created by this plugin except for Critical CSS & Unique CSS & LQIP caches', 'litespeed-cache' ),
 	'icon'	=> 'purge-all',
 	'title_cls'	=> 'litespeed-warning',
 	'newline'	=> true,
@@ -146,7 +155,7 @@ if ( ! is_multisite() || is_network_admin() ) {
 
 	<a 	class="litespeed-panel postbox"
 		href="<?php echo Utility::build_url( $tag, $append_url ) ; ?>"
-		<?php if ( ! empty( $v[ 'cfm' ] ) ) echo 'data-litespeed-cfm="' . $v[ 'cfm' ] . '"' ; ?>
+		<?php if ( ! empty( $v[ 'cfm' ] ) ) echo 'data-litespeed-cfm="' . Str::trim_quotes($v[ 'cfm' ]) . '"' ; ?>
 	>
 		<section class="litespeed-panel-wrapper-icon">
 			<span class="litespeed-panel-icon-<?php echo $v[ 'icon' ] ; ?>"></span>
